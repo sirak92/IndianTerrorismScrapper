@@ -9,24 +9,30 @@ import xlwt
 
 
 class TerrorscrapperPipeline(object):
+    def __init__(self):
+        object.__init__(self)
+        self.book = xlwt.Workbook()
+        self.worksheet = self.book.add_sheet("TerrorismData")
+        self.col_names = ["State", "District", "EventID", "Date", "MetaLocation", "ActGroup", "Actor", "Subject", "Indicator"]
+        self.add_column_headers()
+        # store the current row in excel
+        self.current_row_id = 1
+
     def process_item(self, item, spider):
-        return item
+        spider.log("Got the item from spider")
+        self.store_item_to_excel(item)
 
+    def store_item_to_excel(self, item):
+        current_row = self.worksheet.row(self.current_row_id)
+        for index, col_name in enumerate(self.col_names):
+            current_row.write(index, item.get(col_name.lower(), ""))
 
-def test():
-    book = xlwt.Workbook()
-    worksheet = book.add_sheet("TerrorismData")
+        self.current_row_id += 1
 
-    colnames = ["State", "District", "EventID", "Date", "MetaLocation", "ActGroup", "Actor", "Subject", "Indicator"]
+    def add_column_headers(self):
+        # add column header names to excel
+        for col_num, col_name in enumerate(self.col_names):
+            self.worksheet.write(0, col_num, col_name)
 
-    # add column names
-    for colnum, colname in enumerate(colnames):
-        worksheet.write(0, colnum, colname)
-
-    for rownum in range(1, 10):
-        row = worksheet.row(rownum)
-        for i in range(len(colnames)):
-            row.write(i, "{} - {}".format(rownum, i))
-
-    book.save("test.xls")
-
+    def __del__(self):
+        self.book.save("TerrorismData.xls")

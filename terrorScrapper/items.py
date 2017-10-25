@@ -7,16 +7,17 @@
 
 import scrapy
 from scrapy import Field
+from scrapy.loader.processors import Join, TakeFirst
 
 
 class TerrorscrapperItem(scrapy.Item):
-    state = Field()
-    district = Field()
-    eventId = Field()
-    date = Field()
-    metaLoc = Field()
-    actGrp = Field()
-    actor = Field()
-    subject = Field()
-    indicator = Field()
+    state = Field(output_processor=Join())
+    district = Field(output_processor=Join())
+    eventid = Field(input_processor=TakeFirst(), output_processor=Join())
+    date = Field(input_processor=TakeFirst(), output_processor=Join())
+    metalocation = Field(input_processor=TakeFirst(), output_processor=Join())
+    actgroup = Field(input_processor=TakeFirst(), output_processor=Join())
+    actor = Field(input_processor=TakeFirst(), output_processor=Join())
+    subject = Field(input_processor=TakeFirst(), output_processor=Join())
+    indicator = Field(output_processor=Join())
 
