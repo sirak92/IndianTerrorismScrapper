@@ -1,5 +1,5 @@
 # IndianTerrorismScrapper
-Project intends to scrap Indian terrorism event's information and store in excel format.
+Project intends to scrap Indian terrorism events information for each state/district from the website(http://southasiaterrorism.trfetzer.com/states/IND-Maharashtra.html)  and store in excel format.
 
 
 ## Prerequisites
