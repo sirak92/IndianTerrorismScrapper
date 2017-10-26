@@ -33,4 +33,4 @@ class TerrorscrapperPipeline(object):
             self.worksheet.write(0, col_num, col_name)
 
     def __del__(self):
-        self.book.save("TerrorismData.xls")
+        self.book.save("IndianTerrorismData.xls")
