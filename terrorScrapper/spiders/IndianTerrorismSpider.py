@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 import scrapy
+import logging
 from terrorScrapper.items import TerrorscrapperItem, TerrorLoader
 from bs4 import BeautifulSoup
 
@@ -58,8 +59,8 @@ class IndianTerrorismSpider(scrapy.Spider):
         item.add_xpath('actgroup', '//ul/li[3]/code/text()')
         item.add_xpath('actor', '//ul/li[4]/code/text()')
         item.add_xpath('subject', '//ul/li[5]/code/text()')
-        item.add_xpath('indicator1', '//p[2]/code/text()')
-        item.add_xpath('indicator2', '//p[2]/code/text()')
+        item.add_xpath('indicator1', '//p[5]/code/text()')
+        item.add_xpath('indicator2', '//p[5]/code/text()')
         yield item.load_item()
 
     def _add_state(self, s):
