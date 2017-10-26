@@ -10,3 +10,4 @@ PyDispatcher>=2.0.5
 service_identity
 parsel>=1.1
 beautifulsoup4>=4.5.3
+xlwt=1.3.0
