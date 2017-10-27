@@ -20,6 +20,7 @@ class TerrorscrapperPipeline(object):
 
     def process_item(self, item, spider):
         self.store_item_to_excel(item)
+        return item
 
     def store_item_to_excel(self, item):
         current_row = self.worksheet.row(self.current_row_id)

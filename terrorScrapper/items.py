@@ -25,28 +25,26 @@ class TerrorscrapperItem(scrapy.Item):
     indicator2 = Field()
 
 
-# defining separate input processors for each indicator
-indicator1_list = ["Naxalite", "Naxalites", "Naxal", "Left-Wing", "naxalite", "naxal", "left-wing", "Left-wing",
-                   "PWG", "M aoist", "Peoples ' War Group", "Peoples War Group", "Maoist Communist Center", "MCC",
-                   "CPI-M aoist", "Maoists", "Communist Party of India (Marxist–Leninist)", "CPI-(ML)", "Maoist"]
+# defining separate matching lists and input processors for each indicator
+match_list1 = ["Naxal", "naxal", "Peoples' War Group", "Peoples War Group", "MCC", "PWG",
+               "Left-Wing", "left-wing", "Left-wing", "Left Wing", "Left wing", "left wing",
+               "Maoist", "maoist", "CPI-(ML)", "CPI-M",
+               "Marxist", "Leninist", "Communist", "communist"]
 
-
-indicator2_list = ["Lashkar", "Toiba", "Fidayeen", "Osama bin Laden", "Hizbul Mujahideen", "Lashkar - e - Toiba",
-                   "LeT", "Harkat - ul - Jehadi - e - Islami", "HuJI", "JeM", "Indian Mujahideen", "SIMI",
-                   "Islamic", "Al-Qaeda", "Al-Qaida", "Taliban", "ISIS", "Jaish-e-Mohammed", "Mujahideen",
-                   "Jihad", "Harkat", "Dukhtaran-e-Millat", "Deendar Anjuman", "Jamaat-ul-Mujahideen",
-                   "Students Islamic Movement of India"]
+match_list2 = ["Lashkar", "Toiba", "Fidayeen", "Mujahideen", "LeT", "Harkat", "HuJI",
+               "JeM", "SIMI", "Hizbul", "Qaeda", "Qaida", "Jaish", "Jamaat",  "Islamic",
+               "Taliban", "ISIS",  "Jihad", "Dukhtaran-e-Millat", "Deendar Anjuman", "Osama bin Laden"]
 
 
 def ind1_process(value):
-    for l in indicator1_list:
+    for l in match_list1:
         if l in value:
             return '1'
     return '0'
 
 
 def ind2_process(value):
-    for l in indicator2_list:
+    for l in match_list2:
         if l in value:
             return '1'
     return '0'
