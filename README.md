@@ -1,5 +1,5 @@
 # IndianTerrorismScrapper
-Project intends to scrap Indian terrorism events information for each state/district from the website(http://southasiaterrorism.trfetzer.com/states/IND-Maharashtra.html)  and store in excel format.
+Project intends to scrape Indian terrorism events information for each state/district from the website(http://southasiaterrorism.trfetzer.com/states/IND-Maharashtra.html)  and store it in excel file.
 
 
 ## Prerequisites
@@ -12,8 +12,8 @@ pip3 install -r requirements.txt
 ```
 
 ## Usage
-Iterate to home directory of project and type:
+Iterate to home directory of the project and type:
 ```
 scrapy crawl IndianTerrorismSpider
 ```
-The scraper will generate the `IndianTerrorismData.xls` file.
+The scraper will generate the `IndianTerrorismData.xls` file in the same folder.
